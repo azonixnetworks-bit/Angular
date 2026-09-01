@@ -1,9 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 
 @Component({
-  imports: [],
   selector: 'app-navbar',
-  styleUrl: './navbar.scss',
+  imports: [],
   templateUrl: './navbar.html',
+  styleUrl: './navbar.scss',
 })
-export class Navbar {}
+export class Navbar {
+
+  cartCount = signal(0);
+
+  addToCart() {
+    this.cartCount.update(count => count + 1);
+  }
+
+}

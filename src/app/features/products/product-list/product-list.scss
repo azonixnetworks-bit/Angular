@@ -1,0 +1,20 @@
+.products {
+  padding: 60px 5%;
+
+  h2 {
+    font-size: 32px;
+    margin-bottom: 30px;
+  }
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 768px) {
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -12,7 +12,11 @@
   </div>
 
   <div class="cart">
-    🛒 Cart
+   🛒 Cart ({{ cartCount() }})
   </div>
+
+  <button (click)="addToCart()">
+    Add Product
+  </button>
 
 </nav>
