@@ -1,5 +1,6 @@
-import { Component, input } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
 import { Product } from '../../../core/models/product';
+import { CartService } from '../../../core/services/cart';
 
 @Component({
   selector: 'app-product-card',
@@ -11,8 +12,9 @@ export class ProductCard {
 
   product = input.required<Product>();
 
-  addToCart() {
-    console.log('Product added:', this.product().name);
-  }
+  private cartService = inject(CartService);
 
+  addToCart(): void {
+    this.cartService.addToCart(this.product());
+  }
 }
