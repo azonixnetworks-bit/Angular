@@ -1,0 +1,128 @@
+
+<div class="product-details-page">
+
+  @if (product) {
+
+    <button
+      class="back-button"
+      type="button"
+      (click)="goBack()"
+    >
+      ← Back to Products
+    </button>
+
+    <div class="product-details-card">
+
+      <div class="product-image-section">
+
+        <div class="image-wrapper">
+          <img
+            [src]="product.image"
+            [alt]="product.name"
+          >
+        </div>
+
+      </div>
+
+      <div class="product-info-section">
+
+        <span class="category">
+          {{ product.category }}
+        </span>
+
+        <h1>
+          {{ product.name }}
+        </h1>
+
+        <div class="rating">
+          ★★★★★
+          <span>4.9 (128 reviews)</span>
+        </div>
+
+        <div class="price">
+          ${{ product.price }}
+        </div>
+
+        <p class="description">
+          {{ product.description }}
+        </p>
+
+        <div class="divider"></div>
+
+        <div class="product-meta">
+
+          <div>
+            <span>Availability</span>
+            <strong>In Stock</strong>
+          </div>
+
+          <div>
+            <span>Category</span>
+            <strong>{{ product.category }}</strong>
+          </div>
+
+        </div>
+
+        <button
+          class="add-to-cart-button"
+          type="button"
+          (click)="addToCart()"
+        >
+          🛒 Add to Cart
+        </button>
+
+        <div class="features">
+
+          <div class="feature">
+            <span>🚚</span>
+            <div>
+              <strong>Free Delivery</strong>
+              <small>On eligible orders</small>
+            </div>
+          </div>
+
+          <div class="feature">
+            <span>↩️</span>
+            <div>
+              <strong>Easy Returns</strong>
+              <small>30 day return policy</small>
+            </div>
+          </div>
+
+          <div class="feature">
+            <span>🔒</span>
+            <div>
+              <strong>Secure Payment</strong>
+              <small>100% secure checkout</small>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  } @else {
+
+    <div class="not-found">
+
+      <h2>Product Not Found</h2>
+
+      <p>
+        Sorry, we couldn't find this product.
+      </p>
+
+      <button
+        type="button"
+        (click)="goBack()"
+      >
+        Back to Products
+      </button>
+
+    </div>
+
+  }
+
+</div>
+

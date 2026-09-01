@@ -1,0 +1,190 @@
+
+<section class="cart-page">
+
+  <div class="cart-header">
+
+    <div>
+      <h1>Shopping Cart</h1>
+
+      <p>
+        {{ itemCount() }}
+        item{{ itemCount() === 1 ? '' : 's' }}
+      </p>
+    </div>
+
+    @if (cartItems().length > 0) {
+
+      <button
+        type="button"
+        (click)="clearCart()"
+      >
+        Clear Cart
+      </button>
+
+    }
+
+  </div>
+
+
+  @if (cartItems().length === 0) {
+
+    <div class="empty-cart">
+
+      <h2>Your cart is empty</h2>
+
+      <p>
+        Add some products to your cart.
+      </p>
+
+      <button
+        type="button"
+        (click)="goToProducts()"
+      >
+        Continue Shopping
+      </button>
+
+    </div>
+
+  } @else {
+
+    <div class="cart-content">
+
+      <div class="cart-items">
+
+        @for (item of cartItems(); track item.product.id) {
+
+          <article class="cart-item">
+
+            <img
+              [src]="item.product.image"
+              [alt]="item.product.name"
+            >
+
+
+            <div class="item-info">
+
+              <span>
+                {{ item.product.category }}
+              </span>
+
+              <h3>
+                {{ item.product.name }}
+              </h3>
+
+              <p>
+                ${{ item.product.price }}
+              </p>
+
+            </div>
+
+
+            <div class="quantity-control">
+
+              <button
+                type="button"
+                aria-label="Decrease quantity"
+                (click)="decreaseQuantity(item.product.id)"
+              >
+                −
+              </button>
+
+              <strong>
+                {{ item.quantity }}
+              </strong>
+
+              <button
+                type="button"
+                aria-label="Increase quantity"
+                (click)="increaseQuantity(item.product.id)"
+              >
+                +
+              </button>
+
+            </div>
+
+
+            <strong class="item-total">
+
+              ${{ item.product.price * item.quantity }}
+
+            </strong>
+
+
+            <button
+              class="remove-button"
+              type="button"
+              (click)="removeItem(item.product.id)"
+            >
+              Remove
+            </button>
+
+          </article>
+
+        }
+
+      </div>
+
+
+      <aside class="cart-summary">
+
+        <h2>
+          Order Summary
+        </h2>
+
+
+        <div>
+          <span>Items</span>
+
+          <strong>
+            {{ itemCount() }}
+          </strong>
+        </div>
+
+
+        <div>
+          <span>Subtotal</span>
+
+          <strong>
+            ${{ total() }}
+          </strong>
+        </div>
+
+
+        <div>
+          <span>Shipping</span>
+
+          <strong>
+            Free
+          </strong>
+        </div>
+
+
+        <hr>
+
+
+        <div class="grand-total">
+
+          <span>Total</span>
+
+          <strong>
+            ${{ total() }}
+          </strong>
+
+        </div>
+
+
+        <button
+          class="checkout-button"
+          type="button"
+        >
+          Proceed to Checkout
+        </button>
+
+      </aside>
+
+    </div>
+
+  }
+
+</section>
+

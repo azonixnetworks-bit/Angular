@@ -1,23 +1,45 @@
-.shopverse {
+
+:host {
+  display: block;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
 }
 
-h1 {
-  font-size: 48px;
+.app-main {
+  width: 100%;
+  min-height: calc(100vh - 72px);
+  box-sizing: border-box;
 }
 
-p {
-  font-size: 18px;
+/* ==============================
+   Global Responsive Container
+   ============================== */
+
+@media (min-width: 1440px) {
+  .app-main {
+    padding: 0;
+  }
 }
 
-button {
-  padding: 12px 24px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
+@media (min-width: 1024px) and (max-width: 1439px) {
+  .app-main {
+    padding: 0;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .app-main {
+    padding: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .app-main {
+    min-height: calc(100vh - 64px);
+  }
+}
+
+@media (max-width: 480px) {
+  .app-main {
+    min-height: calc(100vh - 60px);
+  }
 }

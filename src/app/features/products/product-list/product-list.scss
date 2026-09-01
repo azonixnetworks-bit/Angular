@@ -1,20 +1,118 @@
-.products {
-  padding: 60px 5%;
 
-  h2 {
-    font-size: 32px;
-    margin-bottom: 30px;
-  }
+.products-section {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 56px 32px 80px;
+  box-sizing: border-box;
 }
 
-.product-grid {
+/* ==============================
+   Section Header
+   ============================== */
+
+.section-header {
+  margin-bottom: 32px;
+}
+
+.section-header h2 {
+  margin: 0 0 8px;
+  font-size: clamp(28px, 4vw, 38px);
+  line-height: 1.2;
+  font-weight: 800;
+}
+
+.section-header p {
+  margin: 0;
+  font-size: 16px;
+  opacity: 0.65;
+}
+
+/* ==============================
+   Products Grid
+   ============================== */
+
+.products-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 24px;
+  width: 100%;
 }
 
-@media (max-width: 768px) {
-  .product-grid {
-    grid-template-columns: 1fr;
+/* ==============================
+   Large Desktop
+   ============================== */
+
+@media (max-width: 1200px) {
+  .products-section {
+    padding-left: 28px;
+    padding-right: 28px;
+  }
+
+  .products-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
   }
 }
+
+/* ==============================
+   Tablet
+   ============================== */
+
+@media (max-width: 900px) {
+  .products-section {
+    padding: 44px 24px 64px;
+  }
+
+  .products-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
+}
+
+/* ==============================
+   Mobile
+   ============================== */
+
+@media (max-width: 600px) {
+  .products-section {
+    padding: 36px 16px 48px;
+  }
+
+  .section-header {
+    margin-bottom: 24px;
+  }
+
+  .section-header h2 {
+    font-size: 28px;
+  }
+
+  .section-header p {
+    font-size: 14px;
+  }
+
+  .products-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+}
+
+/* ==============================
+   Small Mobile
+   ============================== */
+
+@media (max-width: 380px) {
+  .products-section {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .section-header h2 {
+    font-size: 25px;
+  }
+
+  .products-grid {
+    gap: 14px;
+  }
+}
+

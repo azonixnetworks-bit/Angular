@@ -1,20 +1,136 @@
 
 <nav class="navbar">
 
-  <div class="logo">
-    ShopVerse
+  <div class="navbar-container">
+
+    <!-- Logo -->
+
+    <a
+      class="logo"
+      routerLink="/"
+      (click)="closeMenu()"
+    >
+      ShopVerse
+    </a>
+
+
+    <!-- Desktop Navigation -->
+
+    <div class="nav-links">
+
+      <a
+        routerLink="/"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        Home
+      </a>
+
+      <a
+        routerLink="/"
+        fragment="products"
+        (click)="closeMenu()"
+      >
+        Products
+      </a>
+
+      <a
+        routerLink="/"
+        fragment="categories"
+        (click)="closeMenu()"
+      >
+        Categories
+      </a>
+
+      <a
+        routerLink="/"
+        fragment="about"
+        (click)="closeMenu()"
+      >
+        About
+      </a>
+
+    </div>
+
+
+    <!-- Desktop Cart -->
+
+    <button
+      class="cart-button"
+      type="button"
+      (click)="goToCart()"
+    >
+      🛒
+      <span>Cart</span>
+      <strong>({{ cartCount() }})</strong>
+    </button>
+
+
+    <!-- Mobile Menu Button -->
+
+    <button
+      class="menu-button"
+      type="button"
+      aria-label="Toggle navigation menu"
+      [attr.aria-expanded]="menuOpen()"
+      (click)="toggleMenu()"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
   </div>
 
-  <div class="nav-links">
-    <a href="#">Home</a>
-    <a href="#">Products</a>
-    <a href="#">Categories</a>
-    <a href="#">About</a>
-  </div>
 
-  <div class="cart">
-    <a>🛒 Cart ({{ cartCount }})</a>
-  </div>
+  <!-- Mobile Navigation -->
+
+  @if (menuOpen()) {
+
+    <div class="mobile-menu">
+
+      <a
+        routerLink="/"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        (click)="closeMenu()"
+      >
+        Home
+      </a>
+
+      <a
+        routerLink="/"
+        fragment="products"
+        (click)="closeMenu()"
+      >
+        Products
+      </a>
+
+      <a
+        routerLink="/"
+        fragment="categories"
+        (click)="closeMenu()"
+      >
+        Categories
+      </a>
+
+      <a
+        routerLink="/"
+        fragment="about"
+        (click)="closeMenu()"
+      >
+        About
+      </a>
+
+      <button
+        type="button"
+        (click)="goToCart()"
+      >
+        🛒 Cart ({{ cartCount() }})
+      </button>
+
+    </div>
+
+  }
 
 </nav>
-
