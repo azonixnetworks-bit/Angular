@@ -1,6 +1,6 @@
-import { Component, signal ,inject  } from '@angular/core';
-import { CartService } from '../../core/services/cart';
 
+import { Component, inject } from '@angular/core';
+import { CartService } from '../../core/services/cart';
 
 @Component({
   selector: 'app-navbar',
@@ -9,16 +9,10 @@ import { CartService } from '../../core/services/cart';
   styleUrl: './navbar.scss',
 })
 export class Navbar {
-private cartService = inject(CartService);
-  cartCount = signal(0);
 
-  addToCart() {
-    this.cartCount.update(count => count + 1);
-     return this.cartService.getItemCount();
+  private cartService = inject(CartService);
+
+  get cartCount(): number {
+    return this.cartService.getItemCount();
   }
-
- 
- 
-
-
 }
